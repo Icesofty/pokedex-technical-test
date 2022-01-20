@@ -6,6 +6,23 @@
       <div v-for="item in stats" :key="item.stat.name">
         <p class="text-gray-700">{{ item.stat.name }} : {{ item.base_stat }}</p>
       </div>
+      <button
+        @click="addPokemon()"
+        class="
+          rounded-lg
+          bg-red-400
+          border-b-4 border-red-700
+          px-4
+          py-2
+          h-16
+          transform
+          ease-in-out
+          duration-100
+          focus:border-none focus:translate-y-1
+        "
+      >
+        + Add to team
+      </button>
     </div>
   </div>
 </template>
@@ -37,6 +54,18 @@ export default {
       this.abilities = pokemon.abilities
       this.stats = pokemon.stats
     }
+  },
+  methods: {
+    addPokemon() {
+      if (
+        this.$store.state.localStorage.team.some((element) => element === false)
+      ) {
+        this.$store.commit('localStorage/addPokemonTeam', {
+          name: this.name,
+          sprite: this.sprite,
+        })
+      }
+    },
   },
 }
 </script>
