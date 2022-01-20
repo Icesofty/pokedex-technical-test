@@ -21,7 +21,7 @@
         class="w-[50px] h-[50px]"
     /></NuxtLink>
     <div class="flex -space-x-2 items-center">
-      <div v-for="(item, index) in $store.state.localStorage.team" :key="index">
+      <div v-for="(item, index) in team" :key="index">
         <div class="rounded-full flex items-center justify-center bg-white">
           <img
             v-if="!item"
@@ -108,6 +108,7 @@ export default {
   data() {
     return {
       name: null,
+      team: null,
     }
   },
   computed: {
@@ -131,7 +132,9 @@ export default {
       this.$store.commit('localStorage/removePokemonTeam', index)
     },
   },
-  created() {
+  async created() {
+    const team = await this.$store.state.localStorage.team
+    this.team = team
     this.$nuxt.$on('close', () => {
       this.name = null
       this.$nuxt.$emit('search', false)
