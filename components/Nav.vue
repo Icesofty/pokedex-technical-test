@@ -109,14 +109,14 @@ export default {
     return {
       name: null,
       team: null,
+      pokemonlist: null,
     }
   },
   computed: {
     pokemons() {
       if (this.name) {
-        const pokemons = this.$store.state.localStorage.pokemons.filter(
-          (pokemon) =>
-            pokemon.name.toLowerCase().includes(this.name.toLowerCase())
+        const pokemons = this.pokemonlist.filter((pokemon) =>
+          pokemon.name.toLowerCase().includes(this.name.toLowerCase())
         )
         return pokemons
       } else {
@@ -136,6 +136,7 @@ export default {
   async created() {
     const team = await this.$store.state.localStorage.team
     this.team = team
+    this.pokemonlist = await this.$store.state.localStorage.pokemons
     this.$nuxt.$on('close', () => {
       this.name = null
       this.$nuxt.$emit('search', false)
