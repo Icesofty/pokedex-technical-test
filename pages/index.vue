@@ -1,6 +1,64 @@
 <template>
   <section class="min-h-screen py-8">
-    <div class="mx-auto shadow border grid grid-cols-4 divide-x divide-y">
+    <div
+      class="
+        text-gray-800
+        my-24
+        font-bold
+        leading-none
+        md:text-center
+        font-inter
+      "
+    >
+      <h1 class="text-3xl xl:text-6xl">
+        Discover the new
+        <span class="gradient-h1">Pokedex.</span>
+      </h1>
+      <br />
+      <h2 class="text-lg xl:text-2xl font-light">
+        Explore, build your team, enjoy.
+        <br />
+      </h2>
+      <div
+        class="bg-gray-900 opacity-60 z-40 inset-0 fixed"
+        @click="name = null"
+        v-if="name"
+      ></div>
+      <div class="relative z-50">
+        <input
+          type="text"
+          placeholder="Search..."
+          class="rounded-lg px-4 py-2 border text-xl mt-6 shadow-inner"
+          v-model="name"
+        />
+        <div
+          v-if="name"
+          class="
+            absolute
+            top-20
+            right-0
+            w-full
+            bg-white
+            p-6
+            rounded-lg
+            mb-8
+            z-50
+          "
+        >
+          <NuxtLink
+            :to="`/pokemon/${pokemon.name}`"
+            v-for="(pokemon, index) in searchPokemon"
+            :key="pokemon.id + index"
+            class="items-center flex space-x-2"
+          >
+            <NuxtImg :src="pokemon.sprite" :alt="pokemon.name" />
+            <p>{{ pokemon.name }}</p>
+          </NuxtLink>
+        </div>
+      </div>
+    </div>
+
+    <div class="mx-auto grid grid-cols-4">
       <NuxtLink
         :to="`/pokemon/${pokemon.name}`"
         v-for="pokemon in pokemons"
@@ -16,8 +74,8 @@
           transform
           duration-150
           ease-in-out
-          hover:-translate-y-1 hover:shadow-lg
-          bg-white
+          rounded-lg
+          hover:-translate-y-1 hover:shadow-lg hover:bg-white
         "
       >
         <NuxtImg :src="pokemon.sprite" :alt="pokemon.name" class="w-20 h-20" />
@@ -29,6 +87,11 @@
 
 <script>
 export default {
+  data() {
+    return {
+      name: null,
+    }
+  },
   async asyncData({ $axios }) {
     const pokemons = []
     const pokemonsList = await $axios.$get(
@@ -57,8 +120,47 @@ export default {
       next,
     }
   },
-  created() {
+  computed: {
+    searchPokemon() {
+      if (this.name) {
+        const pokemons = this.pokemons.filter((pokemon) =>
+          pokemon.name.toLowerCase().includes(this.name.toLowerCase())
+        )
+        return pokemons
+      } else {
+        return false
+      }
+    },
+  },
+  async created() {
     this.$store.commit('localStorage/updateList', this.pokemons)
   },
 }
 </script>
+<style>
+.gradient-h1 {
+  background: linear-gradient(45deg, #00ffa3, #03e1ff, #dc1fff);
+  background-size: 600% 100%;
+  animation: gradient 5s linear infinite;
+  animation-direction: alternate;
+  text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient {
+  background: linear-gradient(45deg, #00ffa3, #03e1ff, #dc1fff);
+  background-size: 600% 100%;
+  animation: gradient 5s linear infinite;
+  animation-direction: alternate;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0%;
+  }
+  100% {
+    background-position: 100%;
+  }
+}
+</style>

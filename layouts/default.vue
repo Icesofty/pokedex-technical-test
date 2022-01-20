@@ -12,8 +12,7 @@
       "
     >
       <Nav class="z-50" />
-      <Search class="z-40" />
-      <Nuxt class="z-30" />
+      <Nuxt class="z-20" />
     </div>
   </div>
 </template>

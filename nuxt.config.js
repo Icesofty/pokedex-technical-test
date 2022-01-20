@@ -43,6 +43,7 @@ export default {
     display: 'swap',
     families: {
       'Press Start 2P': [100, 200, 300, 400, 500, 600, 700, 800, 900],
+      Inter: [100, 200, 300, 400, 500, 600, 700, 800, 900],
     }
   },
 

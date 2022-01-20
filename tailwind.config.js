@@ -11,6 +11,8 @@ module.exports = {
     extend: {
       fontFamily: {
         gameboy: ['"Press Start 2P"'],
+        inter: ['Inter'],
+
       },
     },
   },
