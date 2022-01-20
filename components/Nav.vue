@@ -86,8 +86,8 @@
       <NuxtLink
         :to="`/pokemon/${pokemon.name}`"
         @click.native="close()"
-        v-for="pokemon in pokemons"
-        :key="pokemon.id"
+        v-for="(pokemon, index) in pokemons"
+        :key="pokemon.id + index"
         class="items-center flex space-x-2"
       >
         <NuxtImg :src="pokemon.sprite" :alt="pokemon.name" />
@@ -114,10 +114,11 @@ export default {
   computed: {
     pokemons() {
       if (this.name) {
-        const test = this.$store.state.localStorage.pokemons.filter((pokemon) =>
-          pokemon.name.toLowerCase().includes(this.name.toLowerCase())
+        const pokemons = this.$store.state.localStorage.pokemons.filter(
+          (pokemon) =>
+            pokemon.name.toLowerCase().includes(this.name.toLowerCase())
         )
-        return test
+        return pokemons
       } else {
         return false
       }
