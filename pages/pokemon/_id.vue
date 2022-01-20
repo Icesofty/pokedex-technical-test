@@ -1,5 +1,5 @@
 <template>
-  <div class="flex items-center space-x-4">
+  <div class="flex flex-col sm:flex-row items-center space-x-4">
     <img :src="sprite" :alt="name" class="w-36 h-36" />
     <div>
       <p class="text-2xl">{{ name }}</p>
@@ -15,6 +15,7 @@
           px-4
           py-2
           h-16
+          mt-4
           transform
           ease-in-out
           duration-100
