@@ -1,5 +1,5 @@
 <template>
-  <div class="flex space-x-2 items-center rounded-lg p-4">
+  <div class="flex space-x-2 items-center rounded-lg sm:px-4 py-4">
     <div
       v-for="(item, index) in team"
       :key="index"

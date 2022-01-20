@@ -28,7 +28,18 @@
         <input
           type="text"
           placeholder="Search..."
-          class="rounded-lg px-6 py-4 border text-xl mt-6 shadow-inner"
+          class="
+            rounded-lg
+            px-2
+            sm:px-6
+            py-4
+            border
+            text-xl
+            mt-6
+            shadow-inner
+            w-full
+            sm:w-auto
+          "
           v-model="name"
         />
         <div

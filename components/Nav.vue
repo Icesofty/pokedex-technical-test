@@ -1,11 +1,12 @@
 <template>
   <div
     class="
-      h-20
+      sm:h-20
       mb-6
-      flex
+      flex flex-col
+      sm:flex-row
       items-center
-      px-6
+      sm:px-6
       rounded-lg
       justify-between
       relative
