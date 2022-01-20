@@ -11,8 +11,8 @@
         pt-6
       "
     >
-      <Nav class="z-50" />
-      <Nuxt class="z-20" />
+      <Nav />
+      <Nuxt />
     </div>
   </div>
 </template>

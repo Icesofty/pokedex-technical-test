@@ -28,7 +28,7 @@
         <input
           type="text"
           placeholder="Search..."
-          class="rounded-lg px-4 py-2 border text-xl mt-6 shadow-inner"
+          class="rounded-lg px-6 py-4 border text-xl mt-6 shadow-inner"
           v-model="name"
         />
         <div
@@ -57,7 +57,6 @@
         </div>
       </div>
     </div>
-
     <div class="mx-auto grid grid-cols-4">
       <NuxtLink
         :to="`/pokemon/${pokemon.name}`"
@@ -137,30 +136,3 @@ export default {
   },
 }
 </script>
-<style>
-.gradient-h1 {
-  background: linear-gradient(45deg, #00ffa3, #03e1ff, #dc1fff);
-  background-size: 600% 100%;
-  animation: gradient 5s linear infinite;
-  animation-direction: alternate;
-  text-fill-color: transparent;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.gradient {
-  background: linear-gradient(45deg, #00ffa3, #03e1ff, #dc1fff);
-  background-size: 600% 100%;
-  animation: gradient 5s linear infinite;
-  animation-direction: alternate;
-}
-
-@keyframes gradient {
-  0% {
-    background-position: 0%;
-  }
-  100% {
-    background-position: 100%;
-  }
-}
-</style>

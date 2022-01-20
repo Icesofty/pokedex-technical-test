@@ -14,7 +14,6 @@
   >
     <NuxtLink
       to="/"
-      @click.native="close()"
       class="
         w-12
         gradient
@@ -35,35 +34,3 @@
     <Team />
   </div>
 </template>
-
-<script>
-export default {
-  data() {
-    return {
-      team: null,
-      pokemonlist: null,
-    }
-  },
-
-  methods: {
-    close() {
-      this.name = null
-      this.$nuxt.$emit('search', false)
-    },
-  },
-  async created() {
-    this.pokemonlist = await this.$store.state.localStorage.pokemons
-    this.$nuxt.$on('close', () => {
-      this.name = null
-      this.$nuxt.$emit('search', false)
-    })
-  },
-  watch: {
-    name(newValue) {
-      if (newValue) {
-        this.$nuxt.$emit('search', true)
-      }
-    },
-  },
-}
-</script>
