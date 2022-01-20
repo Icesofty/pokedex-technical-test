@@ -134,8 +134,7 @@ export default {
     },
   },
   async created() {
-    const team = await this.$store.state.localStorage.team
-    this.team = team
+    this.team = await this.$store.state.localStorage.team
     this.pokemonlist = await this.$store.state.localStorage.pokemons
     this.$nuxt.$on('close', () => {
       this.name = null

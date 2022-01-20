@@ -5,7 +5,7 @@ export const state = () => ({
 
 export const mutations = {
     updateList(state, list) {
-        state.pokemons = [...state.pokemons, ...list]
+        state.pokemons = list
     },
     addPokemonTeam(state, pokemon) {
         state.team.pop()

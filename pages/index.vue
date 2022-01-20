@@ -58,9 +58,7 @@ export default {
     }
   },
   created() {
-    if (this.$store.state.localStorage.pokemons.length === 0) {
-      this.$store.commit('localStorage/updateList', this.pokemons)
-    }
+    this.$store.commit('localStorage/updateList', this.pokemons)
   },
 }
 </script>
