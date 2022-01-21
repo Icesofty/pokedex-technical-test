@@ -44,7 +44,6 @@ export default {
     if (pokemon) {
       this.name = pokemon.name
       this.sprite = pokemon.sprite
-      this.abilities = pokemon.abilities
       this.stats = pokemon.stats
     } else {
       const pokemon = await this.$axios.$get(
@@ -52,7 +51,6 @@ export default {
       )
       this.name = pokemon.name
       this.sprite = pokemon.sprites.front_default
-      this.abilities = pokemon.abilities
       this.stats = pokemon.stats
     }
   },

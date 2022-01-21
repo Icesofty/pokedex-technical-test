@@ -6,7 +6,7 @@
       class="flex items-center space-x-2 py-2"
     >
       <div class="rounded-full flex items-center justify-center">
-        <img
+        <NuxtImg
           v-if="!item"
           src="https://img.icons8.com/fluency-systems-regular/48/000000/pokeball.png"
           alt="Empty Pokeball"
@@ -26,7 +26,7 @@
             cursor-pointer
           "
         >
-          <img :src="item.sprite" alt="" class="w-10 h-10 z-10" />
+          <img :src="item.sprite" :alt="item.name" class="w-10 h-10 z-10" />
           <div
             class="
               absolute

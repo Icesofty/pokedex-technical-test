@@ -107,7 +107,6 @@ export default {
     const pokemonsList = await $axios.$get(
       'https://pokeapi.co/api/v2/pokemon?limit=151&offset=0'
     )
-    const next = pokemonsList.next
 
     async function fetchPokemons() {
       for (const pokemon of pokemonsList.results) {
@@ -123,11 +122,11 @@ export default {
         })
       }
     }
+
     await fetchPokemons()
 
     return {
       pokemons,
-      next,
     }
   },
   computed: {
